@@ -61,6 +61,7 @@ icinga2:
 {% endfor %}
 {% endif %}
 
+{% if icinga2.conf is defined %}
 ### Begin hosts configuration
 {% if icinga2.conf.hosts is defined %}
 
@@ -158,8 +159,10 @@ icinga2:
     - contents: |
 {{ printconfig("apply", applyinfo["type"], apply, applyinfo["conf"], applyto) }}
 
-{% endfor%}
+{% endfor %}
 {% endif %}
 
-{% endfor%}
+{% endfor %}
 ### End apply configuration
+
+{% endif %}
