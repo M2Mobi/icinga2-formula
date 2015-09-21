@@ -24,4 +24,14 @@ icinga_repo:
 #    - require:
 #      - pkg: debmon_repo_required_packages
 
+{% elif grains['os'] == 'CentOS' %}
+
+icinga_repo:
+  pkgrepo.managed:
+    - humanname: ICINGA (stable release for epel)
+    - name: icinga-stable-release
+    - baseurl: http://packages.icinga.org/epel/$releasever/release/
+    - gpgkey: http://packages.icinga.org/icinga.key
+    - gpgcheck: 1
+
 {% endif %}
