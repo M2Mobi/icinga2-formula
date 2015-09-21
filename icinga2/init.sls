@@ -45,8 +45,6 @@ include:
         }
 {%-endmacro%}
 
-{% if grains['os_family'] in ['Debian']  %}
-
 icinga2:
   pkg.installed:
     - require:
@@ -163,5 +161,3 @@ icinga2:
 
 {% endfor%}
 ### End apply configuration
-
-{% endif %}
