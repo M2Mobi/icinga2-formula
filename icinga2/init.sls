@@ -52,12 +52,14 @@ icinga2:
   service.running:
     - enable: True
 
+{% if icinga2.pkgs is defined %}
 {% for package in icinga2.pkgs %}
 {{ package }}:
   pkg.installed:
     - require:
       - pkgrepo: icinga_repo
 {% endfor %}
+{% endif %}
 
 ### Begin hosts configuration
 {% if icinga2.conf.hosts is defined %}
